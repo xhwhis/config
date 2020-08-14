@@ -1,0 +1,42 @@
+#!/bin/bash
+run() {
+    if [[ -f $1 ]]; then
+        file=$1
+        name=${file%.*}
+        type=${file#*.}
+        case $type in
+            c)
+                clang $1 -o $name -lm -lpthread -lcurses -std=c11 && time ./$name && rm -f $name
+                ;;
+            cpp)
+                clang++ $1 -o $name -lpthread -lcurses -std=c++11 && time ./$name && rm -f $name
+                ;;
+            py)
+                python $1
+                ;;
+            sh)
+                bash $1
+                ;;
+            zsh)
+                zsh $1
+                ;;
+            java)
+                javac $1 && java $name && rm -f $name.class
+                ;;
+            html)
+                google-chrome-stable $1
+                ;;
+            *)
+                echo "type error"
+                ;;
+        esac
+    else
+        echo "run: no such file: $1"
+    fi
+}
+if [[ $# == 0 ]]; then
+    file=`tail -2 ~/.zsh_history | head -1 | tr -s ' ' '\n' | tail -1`
+    run $file
+else
+    run $1
+fi
