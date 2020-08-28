@@ -6,10 +6,18 @@ run() {
         type=${file#*.}
         case $type in
             c)
-                clang $1 -o $name -lm -lpthread -lcurses -std=c11 && time ./$name && rm -f $name
+                if [[ $# > 1 && -f $2 ]]; then
+                    clang $1 -o $name.out -lm -lpthread -lcurses -std=c11 && time ./$name.out < $2 && rm -f $name.out
+                else
+                    clang $1 -o $name.out -lm -lpthread -lcurses -std=c11 && time ./$name.out && rm -f $name.out
+                fi
                 ;;
             cpp)
-                clang++ $1 -o $name -lpthread -lcurses -std=c++11 && time ./$name && rm -f $name
+                if [[ $# > 1 && -f $2 ]]; then
+                    clang++ $1 -o $name.out -lpthread -lcurses -std=c++11 && time ./$name.out < $2 && rm -f $name.out
+                else
+                    clang++ $1 -o $name.out -lpthread -lcurses -std=c++11 && time ./$name.out < $2 && rm -f $name.out
+                fi
                 ;;
             py)
                 python $1
@@ -38,5 +46,5 @@ if [[ $# == 0 ]]; then
     file=`tail -2 ~/.zsh_history | head -1 | tr -s ' ' '\n' | tail -1`
     run $file
 else
-    run $1
+    run $*
 fi
