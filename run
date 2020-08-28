@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 run() {
     if [[ -f $1 ]]; then
         file=$1
