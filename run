@@ -43,7 +43,7 @@ run() {
     fi
 }
 if [[ $# == 0 ]]; then
-    file=`tail -2 ~/.zsh_history | head -1 | tr -s ' ' '\n' | tail -1`
+    file=`tail -2 ~/.zsh_history | head -1 | cut -d " " -f 3-`
     run $file
 else
     run $*
