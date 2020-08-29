@@ -45,6 +45,9 @@ run() {
             java)
                 javac $1 && java $name && rm -f $name.class
                 ;;
+            go)
+                go run $1
+                ;;
             html)
                 google-chrome-stable $1
                 ;;
