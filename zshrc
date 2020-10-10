@@ -104,6 +104,7 @@ alias cls="clear"
 alias cat="ccat"
 alias ra="ranger"
 alias fy="ydcv"
+alias pc="proxychains4"
 alias -s c=copyfile
 alias -s cpp=copyfile
 
