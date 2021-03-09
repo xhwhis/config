@@ -49,7 +49,7 @@ run() {
                 go run $1
                 ;;
             html)
-                google-chrome-stable $1
+                open $1
                 ;;
             *)
                 echo "type error"
