@@ -20,57 +20,57 @@ call coc#config('coc.preferences', {
 
 " c/c++ golang 和 bash 的 language server 设置
 call coc#config("languageserver", {
-      \"ccls": {
-      \  "command": "ccls",
-      \  "filetypes": ["c", "cpp"],
-      \  "rootPatterns": ["compile_commands.json", ".svn/", ".git/"],
-      \  "index": {
-      \     "threads": 8
-      \  },
-      \  "initializationOptions": {
-      \     "cache": {
-      \       "directory": ".ccls-cache"
-      \     },
-      \     "highlight": { "lsRanges" : v:true }
-      \   },
-      \  "client": {
-      \    "snippetSupport": v:true
-      \   }
-      \},
-      \"golang": {
-      \      "command": "gopls",
-      \      "rootPatterns": ["go.mod", ".vim/", ".git/", ".svn/"],
-      \      "filetypes": ["go"],
-      \      "initializationOptions": {
-      \        "usePlaceholders": "true"
-      \      }
-      \},
-      \"bash": {
-      \  "command": "bash-language-server",
-      \  "args": ["start"],
-      \  "filetypes": ["sh"],
-      \  "ignoredRootPaths": []
-      \},
-      \})
+    \"ccls": {
+    \  "command": "ccls",
+    \  "filetypes": ["c", "cpp"],
+    \  "rootPatterns": ["compile_commands.json", ".svn/", ".git/"],
+    \  "index": {
+    \     "threads": 8
+    \  },
+    \  "initializationOptions": {
+    \     "cache": {
+    \       "directory": ".ccls-cache"
+    \     },
+    \     "highlight": { "lsRanges" : v:true }
+    \   },
+    \  "client": {
+    \    "snippetSupport": v:true
+    \   }
+    \},
+    \"golang": {
+    \      "command": "gopls",
+    \      "rootPatterns": ["go.mod", ".vim/", ".git/", ".svn/"],
+    \      "filetypes": ["go"],
+    \      "initializationOptions": {
+    \        "usePlaceholders": "true"
+    \      }
+    \},
+    \"bash": {
+    \  "command": "bash-language-server",
+    \  "args": ["start"],
+    \  "filetypes": ["sh"],
+    \  "ignoredRootPaths": []
+    \},
+\})
 
 " coc.nvim 插件，用于支持 python java 等语言
 let s:coc_extensions = [
-			\ 'coc-python',
-			\ 'coc-java',
-			\ 'coc-json',
-      \ 'coc-css',
-      \ 'coc-html',
-      \ 'coc-word',
-      \ 'coc-cmake',
-      \ 'coc-dictionary',
-      \ 'coc-rust-analyzer',
-      \ 'coc-vimlsp',
-      \ 'coc-ci',
-      \ 'coc-snippets',
-      \ 'coc-tsserver',
-      \ 'coc-vimtex',
-      \ 'coc-todolist',
-			\]
+    \ 'coc-python',
+    \ 'coc-java',
+    \ 'coc-json',
+    \ 'coc-css',
+    \ 'coc-html',
+    \ 'coc-word',
+    \ 'coc-cmake',
+    \ 'coc-dictionary',
+    \ 'coc-rust-analyzer',
+    \ 'coc-vimlsp',
+    \ 'coc-ci',
+    \ 'coc-snippets',
+    \ 'coc-tsserver',
+    \ 'coc-vimtex',
+    \ 'coc-todolist',
+\]
 for extension in s:coc_extensions
 	call coc#add_extension(extension)
 endfor
