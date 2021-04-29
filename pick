@@ -1,25 +1,12 @@
 #!/usr/bin/bash
 pick() {
-    case $1 in
-        hk)
-            echo "    " | sudo -S cp /etc/v2ray/hk_config.json /etc/v2ray/config.json > /dev/null 2>&1
-            echo "    " | sudo -S systemctl restart v2ray
-            echo "success"
-            ;;
-        jp)
-            echo "    " | sudo -S cp /etc/v2ray/jp_config.json /etc/v2ray/config.json > /dev/null 2>&1
-            echo "    " | sudo -S systemctl restart v2ray
-            echo "success"
-            ;;
-        us)
-            echo "    " | sudo -S cp /etc/v2ray/us_config.json /etc/v2ray/config.json > /dev/null 2>&1
-            echo "    " | sudo -S systemctl restart v2ray
-            echo "success"
-            ;;
-        *)
-            echo "pick: no such node: $1"
-            ;;
-    esac
+    if [ -f "/etc/v2ray/$1_config.json" ]; then
+        echo "    " | sudo -S cp /etc/v2ray/$1_config.json /etc/v2ray/config.json > /dev/null 2>&1
+        echo "    " | sudo -S systemctl restart v2ray
+        echo "success"
+    else
+        echo "pick: no such node: $1"
+    fi
 }
 if [[ $# == 0 ]]; then
     read -p "pick the node: " node
