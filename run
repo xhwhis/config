@@ -51,6 +51,9 @@ run() {
             html)
                 open $1
                 ;;
+            swift)
+                swift $1
+                ;;
             *)
                 echo "type error"
                 ;;
