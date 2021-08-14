@@ -34,7 +34,7 @@ run() {
                 fi
                 ;;
             py)
-                python $*
+                python3 $1
                 ;;
             sh)
                 bash $1
