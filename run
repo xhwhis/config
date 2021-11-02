@@ -46,7 +46,7 @@ run() {
                 javac $1 && java $name && rm -f $name.class
                 ;;
             go)
-                go build $1 -o $name.out && time ./$name.out && rm -f $name.out
+                go build -o $name.out $1 && time ./$name.out && rm -f $name.out
                 ;;
             html)
                 open $1
