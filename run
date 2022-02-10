@@ -33,8 +33,11 @@ run() {
                     fi
                 fi
                 ;;
-            py)
-                python3 $1
+            go)
+                go build -o $name.out $1 && time ./$name.out && rm -f $name.out
+                ;;
+            js|ts)
+                tsc $1
                 ;;
             sh)
                 bash $1
@@ -42,17 +45,17 @@ run() {
             zsh)
                 zsh $1
                 ;;
-            java)
-                javac $1 && java $name && rm -f $name.class
-                ;;
-            go)
-                go build -o $name.out $1 && time ./$name.out && rm -f $name.out
-                ;;
-            html)
-                open $1
+            py)
+                python3 $1
                 ;;
             swift)
                 swift $1
+                ;;
+            java)
+                javac $1 && java $name && rm -f $name.class
+                ;;
+            html)
+                open $1
                 ;;
             *)
                 echo "type error"
