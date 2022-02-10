@@ -37,26 +37,26 @@ run() {
                 go build -o $name.out $1 && time ./$name.out && rm -f $name.out
                 ;;
             js)
-                echo "<!DOCTYPE html>
+                mkdir -p html && echo "<!DOCTYPE html>
 <html>
     <head>
         <title>run $1</title>
     </head>
     <body>
-        <script src=\"$1\"></script>
+        <script src=\"../$1\"></script>
     </body>
-</html>" > $name.html && open $name.html
+</html>" > html/$name.html && open html/$name.html
                 ;;
             ts)
-                tsc $1 && echo "<!DOCTYPE html>
+                tsc $1 --outDir js && mkdir -p html && echo "<!DOCTYPE html>
 <html>
     <head>
         <title>run $1</title>
     </head>
     <body>
-        <script src=\"$1\"></script>
+        <script src=\"../js/$name.js\"></script>
     </body>
-</html>" > $name.html && open $name.html
+</html>" > html/$name.html && open html/$name.html
                 ;;
             sh)
                 bash $1
