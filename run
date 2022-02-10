@@ -36,8 +36,27 @@ run() {
             go)
                 go build -o $name.out $1 && time ./$name.out && rm -f $name.out
                 ;;
-            js|ts)
-                tsc $1
+            js)
+                echo "<!DOCTYPE html>
+<html>
+    <head>
+        <title>run $1</title>
+    </head>
+    <body>
+        <script src=\"$1\"></script>
+    </body>
+</html>" > $name.html && open $name.html
+                ;;
+            ts)
+                tsc $1 && echo "<!DOCTYPE html>
+<html>
+    <head>
+        <title>run $1</title>
+    </head>
+    <body>
+        <script src=\"$1\"></script>
+    </body>
+</html>" > $name.html && open $name.html
                 ;;
             sh)
                 bash $1
