@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/lws/.oh-my-zsh"
+export ZSH="/Users/lws/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -23,14 +23,13 @@ ZSH_THEME="dracula"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -45,6 +44,9 @@ ZSH_THEME="dracula"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -68,7 +70,7 @@ ZSH_THEME="dracula"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting autojump web-search extract last-working-dir pip thefuck colored-man-pages colorize safe-paste git-open vi-mode copyfile copydir gitfast command-not-found history)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting autojump web-search extract last-working-dir sudo pip thefuck colored-man-pages colorize safe-paste git-open vi-mode copyfile copypath gitfast command-not-found history)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,16 +99,29 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias vim="nvim"
 alias vi="nvim"
+alias python="python3"
+alias pip="pip3"
 alias rm="rm -i"
 alias cp="cp -i"
 alias cls="clear"
 alias cat="ccat"
 alias ra="ranger"
-alias fy="ydcv"
-alias pc="proxychains4"
+alias gitconfig="git config user.name 'liaoweishi';git config user.email 'liaoweishi@kingsoft.com'"
+alias proxy="export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;export ALL_PROXY=socks5://127.0.0.1:1080"
+alias unproxy="unset http_proxy;unset https_proxy;unset ALL_PROXY"
+alias pgstart="pg_ctl -l /tmp/pglogfile start"
+alias pgstop="pg_ctl stop -s -m fast"
+alias addroute="sudo route -n add -net 192.168.100.0 -netmask 255.255.255.0 10.90.199.39"
 alias -s c=copyfile
 alias -s cpp=copyfile
 
-export EDITOR=/usr/bin/nvim
-export BROWSER=/usr/bin/google-chrome-stable
+export PGHOME=/Users/lws/exline/infra/metagres/Debug
+export PGDATA=/Users/lws/exline/infra/pgdata
+export PATH=$PGHOME/bin:$PATH
+
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+eval $(thefuck --alias)
+
+export PATH=/Users/lws/Library/Python/3.8/bin:$PATH
