@@ -67,6 +67,9 @@ run() {
             py)
                 python3 $1
                 ;;
+            rb)
+                ruby $1
+                ;;
             swift)
                 swift $1
                 ;;

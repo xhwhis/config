@@ -124,4 +124,5 @@ export PATH=$PGHOME/bin:$PATH
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 eval $(thefuck --alias)
 
-export PATH=/Users/lws/Library/Python/3.8/bin:$PATH
+export PATH="/opt/homebrew/opt/python@3.10/bin:$PATH"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
