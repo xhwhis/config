@@ -126,3 +126,4 @@ eval $(thefuck --alias)
 
 export PATH="/opt/homebrew/opt/python@3.10/bin:$PATH"
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="/opt/homebrew/lib/ruby/gems/3.1.0/bin:$PATH"
