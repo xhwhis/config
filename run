@@ -70,6 +70,9 @@ run() {
             rb)
                 ruby $1
                 ;;
+            php)
+                php $1
+                ;;
             swift)
                 swift $1
                 ;;
