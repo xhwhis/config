@@ -5,39 +5,42 @@ run() {
         name=${file%.*}
         type=${file#*.}
         case $type in
-            c)
-                if [[ $# == 1 ]]; then
-                    clang $1 -o $name.out -lm -lpthread -lcurses -std=c11 && time ./$name.out && rm -f $name.out
+        c)
+            if [[ $# == 1 ]]; then
+                clang $1 -o $name.out -lm -lpthread -lcurses -std=c11 && time ./$name.out && rm -f $name.out
+            else
+                if [[ $2 == "<" ]]; then
+                    clang $1 -o $name.out -lm -lpthread -lcurses -std=c11 && time ./$name.out <$3 && rm -f $name.out
+                elif [[ $2 == ">" ]]; then
+                    clang $1 -o $name.out -lm -lpthread -lcurses -std=c11 && time ./$name.out >$3 && rm -f $name.out
                 else
-                    if [[ $2 == "<" ]]; then
-                        clang $1 -o $name.out -lm -lpthread -lcurses -std=c11 && time ./$name.out < $3 && rm -f $name.out
-                    elif [[ $2 == ">" ]]; then
-                        clang $1 -o $name.out -lm -lpthread -lcurses -std=c11 && time ./$name.out > $3 && rm -f $name.out
-                    else
-                        para=`echo $* | cut -d " " -f 2-`
-                        clang $1 -o $name.out -lm -lpthread -lcurses -std=c11 && time ./$name.out $para && rm -f $name.out
-                    fi
+                    para=$(echo $* | cut -d " " -f 2-)
+                    clang $1 -o $name.out -lm -lpthread -lcurses -std=c11 && time ./$name.out $para && rm -f $name.out
                 fi
-                ;;
-            cpp)
-                if [[ $# == 1 ]]; then
-                    clang++ $1 -o $name.out -lpthread -lcurses -std=c++11 && time ./$name.out && rm -f $name.out
+            fi
+            ;;
+        cpp)
+            if [[ $# == 1 ]]; then
+                clang++ $1 -o $name.out -lpthread -lcurses -std=c++11 && time ./$name.out && rm -f $name.out
+            else
+                if [[ $2 == "<" ]]; then
+                    clang++ $1 -o $name.out -lpthread -lcurses -std=c++11 && time ./$name.out <$3 && rm -f $name.out
+                elif [[ $2 == ">" ]]; then
+                    clang++ $1 -o $name.out -lpthread -lcurses -std=c++11 && time ./$name.out >$3 && rm -f $name.out
                 else
-                    if [[ $2 == "<" ]]; then
-                        clang++ $1 -o $name.out -lpthread -lcurses -std=c++11 && time ./$name.out < $3 && rm -f $name.out
-                    elif [[ $2 == ">" ]]; then
-                        clang++ $1 -o $name.out -lpthread -lcurses -std=c++11 && time ./$name.out > $3 && rm -f $name.out
-                    else
-                        para=`echo $* | cut -d " " -f 2-`
-                        clang++ $1 -o $name.out -lpthread -lcurses -std=c++11 && time ./$name.out $para && rm -f $name.out
-                    fi
+                    para=$(echo $* | cut -d " " -f 2-)
+                    clang++ $1 -o $name.out -lpthread -lcurses -std=c++11 && time ./$name.out $para && rm -f $name.out
                 fi
-                ;;
-            go)
-                go build -o $name.out $1 && time ./$name.out && rm -f $name.out
-                ;;
-            js)
-                mkdir -p html && echo "<!DOCTYPE html>
+            fi
+            ;;
+        go)
+            go build -o $name.out $1 && time ./$name.out && rm -f $name.out
+            ;;
+        rs)
+            rustc $1 -o $name.out && time ./$name.out && rm -f $name.out
+            ;;
+        js)
+            mkdir -p html && echo "<!DOCTYPE html>
 <html>
     <head>
         <title>run $1</title>
@@ -45,10 +48,10 @@ run() {
     <body>
         <script src=\"../$1\"></script>
     </body>
-</html>" > html/$name.html && open html/$name.html
-                ;;
-            ts)
-                tsc $1 --outDir js && mkdir -p html && echo "<!DOCTYPE html>
+</html>" >html/$name.html && open html/$name.html
+            ;;
+        ts)
+            tsc $1 --outDir js && mkdir -p html && echo "<!DOCTYPE html>
 <html>
     <head>
         <title>run $1</title>
@@ -56,42 +59,42 @@ run() {
     <body>
         <script src=\"../js/$name.js\"></script>
     </body>
-</html>" > html/$name.html && open html/$name.html
-                ;;
-            sh)
-                bash $1
-                ;;
-            zsh)
-                zsh $1
-                ;;
-            py)
-                python3 $1
-                ;;
-            rb)
-                ruby $1
-                ;;
-            php)
-                php $1
-                ;;
-            swift)
-                swift $1
-                ;;
-            java)
-                javac $1 && java $name && rm -f $name.class
-                ;;
-            html)
-                open $1
-                ;;
-            *)
-                echo "type error"
-                ;;
+</html>" >html/$name.html && open html/$name.html
+            ;;
+        sh)
+            bash $1
+            ;;
+        zsh)
+            zsh $1
+            ;;
+        py)
+            python3 $1
+            ;;
+        rb)
+            ruby $1
+            ;;
+        php)
+            php $1
+            ;;
+        swift)
+            swift $1
+            ;;
+        java)
+            javac $1 && java $name && rm -f $name.class
+            ;;
+        html)
+            open $1
+            ;;
+        *)
+            echo "type error"
+            ;;
         esac
     else
         echo "run: no such file: $1"
     fi
 }
 if [[ $# == 0 ]]; then
-    all=`tail -2 ~/.zsh_history | head -1 | cut -d " " -f 3-`
+    all=$(tail -2 ~/.zsh_history | head -1 | cut -d " " -f 3-)
     run $all
 else
     run $*
