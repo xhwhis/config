@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/lws/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -100,30 +100,29 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim="nvim"
-alias vi="nvim"
 alias python="python3"
 alias pip="pip3"
 alias rm="rm -i"
 alias cp="cp -i"
 alias cls="clear"
-alias cat="ccat"
+alias ls="exa"
+alias cat="bat --theme=Dracula"
+alias find="fd"
 alias ra="ranger"
-alias gitconfig="git config user.name 'liaoweishi';git config user.email 'liaoweishi@kingsoft.com'"
-alias proxy="export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;export ALL_PROXY=socks5://127.0.0.1:1080"
-alias unproxy="unset http_proxy;unset https_proxy;unset ALL_PROXY"
-alias pgstart="pg_ctl -l /tmp/pglogfile start"
-alias pgstop="pg_ctl stop -s -m fast"
-alias addroute="sudo route -n add -net 192.168.100.0 -netmask 255.255.255.0 10.90.199.39"
+alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
+alias unproxy="unset https_proxy http_proxy all_proxy"
 alias -s c=copyfile
 alias -s cpp=copyfile
 
-export PGHOME=/Users/lws/exline/infra/metagres/Debug
-export PGDATA=/Users/lws/exline/infra/pgdata
-export PATH=$PGHOME/bin:$PATH
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
 
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 eval $(thefuck --alias)
+export FZF_DEFAULT_OPTS="--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 
-export PATH="/opt/homebrew/opt/python@3.10/bin:$PATH"
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export PATH="/opt/homebrew/lib/ruby/gems/3.1.0/bin:$PATH"
+export PATH="$HOME/Library/Python/3.8/bin:$PATH"
+export PATH="$HOME/.pub-cache/bin:$PATH"
