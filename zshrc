@@ -125,4 +125,5 @@ export FZF_DEFAULT_OPTS="--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f
 export PUB_HOSTED_URL="https://pub.flutter-io.cn"
 export FLUTTER_STORAGE_BASE_URL="https://storage.flutter-io.cn"
 
+export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.pub-cache/bin:$PATH"
