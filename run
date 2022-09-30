@@ -86,11 +86,11 @@ run() {
             open $1
             ;;
         *)
-            echo "type error"
+            echo 'run: unsupported type: ".'$type'"'
             ;;
         esac
     else
-        echo "run: no such file: $1"
+        echo 'run: no such file: "'$1'"'
     fi
 }
 if [[ $# == 0 ]]; then

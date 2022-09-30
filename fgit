@@ -1,4 +1,22 @@
 #!/bin/sh
-git add .
-git commit -m `date +%Y/%m/%d`
-git push origin `git rev-parse --abbrev-ref HEAD`
+if [[ $# == 0 ]]; then
+    git add . && git commit -m $(date +%Y/%m/%d) && git push origin $(git rev-parse --abbrev-ref HEAD)
+else
+    case $1 in
+    hook)
+        husky install && husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
+        ;;
+    reset)
+        git add . && git reset HEAD --hard
+        ;;
+    config)
+        git config user.name "liaoweishi" && git config user.email "liaoweishi@bdsecurity.com"
+        ;;
+    push)
+        git add . && git commit -m $(date +%Y/%m/%d) && git push origin $(git rev-parse --abbrev-ref HEAD)
+        ;;
+    *)
+        echo 'fgit: no such subcommand: "'$1'"'
+        ;;
+    esac
+fi
