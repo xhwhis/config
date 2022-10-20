@@ -2,6 +2,9 @@
 	name = xhwhis
     email = hi@whis.me
 
+[init]
+	defaultBranch = master
+
 [core]
     pager = delta
 
@@ -20,4 +23,3 @@
 
 [diff]
     colorMoved = default
-
