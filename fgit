@@ -3,14 +3,17 @@ if [[ $# == 0 ]]; then
     git add . && git commit -m $(date +%Y/%m/%d) && git push origin $(git rev-parse --abbrev-ref HEAD)
 else
     case $1 in
-    hook)
-        husky install && husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
+    hooks)
+        husky install && husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"' && husky add .husky/pre-commit "npx lint-staged"
         ;;
     reset)
         git add . && git reset HEAD --hard
         ;;
-    config)
+    work)
         git config user.name "liaoweishi" && git config user.email "liaoweishi@bdsecurity.com"
+        ;;
+    personal)
+        git config user.name "xhwhis" && git config user.email "hi@whis.me"
         ;;
     push)
         git add . && git commit -m $(date +%Y/%m/%d) && git push origin $(git rev-parse --abbrev-ref HEAD)
