@@ -120,11 +120,15 @@ export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
 export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
 
+export RUSTUP_DIST_SERVER="https://rsproxy.cn"
+export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
+
+export PUB_HOSTED_URL="https://pub.flutter-io.cn"
+export FLUTTER_STORAGE_BASE_URL="https://storage.flutter-io.cn"
+
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 eval $(thefuck --alias)
 eval $(starship init zsh)
 export FZF_DEFAULT_OPTS="--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
-export PUB_HOSTED_URL="https://pub.flutter-io.cn"
-export FLUTTER_STORAGE_BASE_URL="https://storage.flutter-io.cn"
 
 export PATH="$HOME/.pub-cache/bin:$PATH"
