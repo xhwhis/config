@@ -4,7 +4,7 @@ if [[ $# == 0 ]]; then
 else
     case $1 in
     hooks)
-        husky install && husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"' && husky add .husky/pre-commit "npx lint-staged"
+        husky install && echo "_" >.husky/.gitignore && husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"' && husky add .husky/pre-commit "npx lint-staged"
         ;;
     reset)
         git add . && git reset HEAD --hard
