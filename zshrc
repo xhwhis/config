@@ -125,6 +125,7 @@ export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bot
 export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
 export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
 export HOMEBREW_PIP_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple"
+export HOMEBREW_UPGRADE_GREEDY=1
 
 export RUSTUP_DIST_SERVER="https://rsproxy.cn"
 export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
@@ -137,7 +138,9 @@ export FZF_DEFAULT_OPTS="--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 eval $(thefuck --alias)
 eval $(starship init zsh)
+eval $(op completion zsh) && compdef _op op
 
 export PATH="$(go env GOPATH)/bin:$PATH"
 export PATH="$HOME/.pub-cache/bin:$PATH"
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+export PATH="$(brew --prefix)/opt/node@18/bin:$PATH"
