@@ -10,7 +10,7 @@ else
         git add . && git reset HEAD --hard
         ;;
     work)
-        git config user.name "liaoweishi" && git config user.email "liaoweishi@bdsecurity.com"
+        git config user.name "liaoweishi" && git config user.email "liaowsh@diit.cn"
         ;;
     personal)
         git config user.name "xhwhis" && git config user.email "hi@whis.me"
