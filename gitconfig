@@ -1,12 +1,16 @@
 [user]
 	name = xhwhis
-    email = hi@whis.me
+	email = hi@whis.me
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO/4UMGkQ4pKenY3913sOrmUBLr2LTl2Izj91B0gnhv0
 
 [init]
 	defaultBranch = master
 
+[pull]
+	rebase = false
+
 [http "https://github.com"]
-	proxy = socks5://127.0.0.1:7890
+	proxy = socks5://127.0.0.1:8235
 
 [core]
     pager = delta
@@ -26,3 +30,10 @@
 
 [diff]
     colorMoved = default
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true
+
