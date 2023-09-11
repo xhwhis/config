@@ -72,7 +72,7 @@ FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting autojump web-search extract last-working-dir sudo pip thefuck colored-man-pages colorize safe-paste git-open vi-mode copyfile copypath gitfast command-not-found history)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zoxide web-search extract last-working-dir sudo pip thefuck colored-man-pages colorize safe-paste git-open vi-mode copyfile copypath gitfast command-not-found history)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -101,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim="nvim"
+alias vim="lvim"
 alias vi="nvim"
 alias python="python3"
 alias pip="pip3"
@@ -114,9 +114,8 @@ alias cat="bat --theme=Dracula"
 alias find="fd"
 alias ra="ranger"
 alias cd..="cd .."
-alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
+alias proxy="export https_proxy=http://127.0.0.1:8234;export http_proxy=http://127.0.0.1:8234;export all_proxy=socks5://127.0.0.1:8235"
 alias unproxy="unset https_proxy http_proxy all_proxy"
-alias vm="multipass shell"
 alias -s c=copyfile
 alias -s cpp=copyfile
 
@@ -135,12 +134,13 @@ export FLUTTER_STORAGE_BASE_URL="https://storage.flutter-io.cn"
 
 export FZF_DEFAULT_OPTS="--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
 
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 eval $(thefuck --alias)
-eval $(starship init zsh)
-eval $(op completion zsh) && compdef _op op
+eval "$(op completion zsh)" && compdef _op op
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
 
 export PATH="$(go env GOPATH)/bin:$PATH"
 export PATH="$HOME/.pub-cache/bin:$PATH"
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$(brew --prefix)/opt/node@18/bin:$PATH"
