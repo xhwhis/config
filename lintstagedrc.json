@@ -1,1 +1,4 @@
-{ "*.{md, yml, yaml, json, xml}": "prettier --ignore-unknown --write" }
+{
+  "*.{yml, yaml, json, xml}": "prettier --ignore-unknown --write",
+  "*.md": "markdownlint-cli2 --fix"
+}
