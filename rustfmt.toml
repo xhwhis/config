@@ -1,0 +1,7 @@
+edition = "2021"
+version = "Two"
+newline_style = "Unix"
+group_imports = "StdExternalCrate"
+fn_params_layout = "Compressed"
+format_code_in_doc_comments = true
+normalize_comments = true
