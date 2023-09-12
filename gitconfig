@@ -1,39 +1,39 @@
 [user]
-	name = xhwhis
-	email = hi@whis.me
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO/4UMGkQ4pKenY3913sOrmUBLr2LTl2Izj91B0gnhv0
+  name = xhwhis
+  email = hi@whis.me
 
 [init]
-	defaultBranch = master
+  defaultBranch = master
 
 [pull]
-	rebase = false
+  rebase = false
 
 [http "https://github.com"]
-	proxy = socks5://127.0.0.1:8235
+  proxy = socks5://127.0.0.1:8235
 
 [core]
-    pager = delta
+  pager = delta
 
 [interactive]
-    diffFilter = delta --color-only
-[add.interactive]
-    useBuiltin = false
+  diffFilter = delta --color-only
 
 [delta]
-    navigate = true
-    syntax-theme = Dracula
-    line-numbers = true
+  navigate = true
+  light = false
+  line-numbers = true
 
 [merge]
-    conflictstyle = diff3
+  conflictstyle = diff3
 
 [diff]
-    colorMoved = default
+  colorMoved = default
+
 [gpg]
 	format = ssh
+
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
 [commit]
-	gpgsign = true
+  gpgsign = true
 
