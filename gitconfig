@@ -6,7 +6,7 @@
   defaultBranch = master
 
 [pull]
-  rebase = false
+	rebase = true
 
 [http "https://github.com"]
   proxy = socks5://127.0.0.1:8235
@@ -23,17 +23,41 @@
   line-numbers = true
 
 [merge]
-  conflictstyle = diff3
+	conflictstyle = zdiff3
 
 [diff]
-  colorMoved = default
+	colorMoved = plain
+	algorithm = histogram
+	mnemonicPrefix = true
+	renames = true
 
 [gpg]
-	format = ssh
+  format = ssh
 
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 
 [commit]
   gpgsign = true
+
+[push]
+	autoSetupRemote = true
+	followTags = true
+
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+
+[help]
+	autocorrect = prompt
+
+[rerere]
+	enabled = true
+	autoupdate = true
+
+[rebase]
+	autoSquash = true
+	autoStash = true
+  updateRefs = true
 
