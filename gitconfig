@@ -6,13 +6,14 @@
   defaultBranch = master
 
 [pull]
-	rebase = true
+  rebase = true
 
 [http "https://github.com"]
-  proxy = socks5://127.0.0.1:8235
+  proxy = socks5://127.0.0.1:7897
 
 [core]
   pager = delta
+  sshCommand = "/mnt/c/WINDOWS/System32/OpenSSH/ssh.exe"
 
 [interactive]
   diffFilter = delta --color-only
@@ -23,41 +24,41 @@
   line-numbers = true
 
 [merge]
-	conflictstyle = zdiff3
+  conflictstyle = zdiff3
 
 [diff]
-	colorMoved = plain
-	algorithm = histogram
-	mnemonicPrefix = true
-	renames = true
+  colorMoved = plain
+  algorithm = histogram
+  mnemonicPrefix = true
+  renames = true
 
 [gpg]
   format = ssh
 
 [gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+  program = "/mnt/c/Users/xhwhi/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
 
 [commit]
   gpgsign = true
 
 [push]
-	autoSetupRemote = true
-	followTags = true
+  autoSetupRemote = true
+  followTags = true
 
 [fetch]
-	prune = true
-	pruneTags = true
-	all = true
+  prune = true
+  pruneTags = true
+  all = true
 
 [help]
-	autocorrect = prompt
+  autocorrect = prompt
 
 [rerere]
-	enabled = true
-	autoupdate = true
+  enabled = true
+  autoupdate = true
 
 [rebase]
-	autoSquash = true
-	autoStash = true
+  autoSquash = true
+  autoStash = true
   updateRefs = true
 
